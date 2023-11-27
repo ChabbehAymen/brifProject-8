@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-<html lang=
-<i></i>"en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MoviesTan</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script
-      src="https://kit.fontawesome.com/f3cda0a0f5.js" crossorigin="anonymous"></script>
-    <script src="main.js" defer></script>
-</head>
-<body>
-
+      src="https://kit.fontawesome.com/f3cda0a0f5.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
     <header>
-        <h1>MoviesTan</h1>
-        <div class="tabs">
-            <p>Home</p>
-            <p>Tv Shows</p>
-            <p>Movies</p>
-            <p>Favorite</p>
-        </div>
-        <label for="search-bar">
-            <input
-              type="text"
-              name=""
-              id="search-bar"
-              placeholder="Search..."
-            />
-          </label>
+      <h1>MoviesTan</h1>
+      <div class="tabs">
+        <p class="selected">Home</p>
+        <p>Tv Shows</p>
+        <p>Movies</p>
+        <p>Favorite</p>
+      </div>
+      <label for="search-bar">
+        <input type="text" name="" id="search-bar" placeholder="Search..." />
+      </label>
     </header>
     <main>
-        <!-- <div class="movie-item">
-            <div name="img"></div>
-            <h4>Trolls Band Together</h4>
-        </div> -->
+      <h1>The witcher</h1>
+      <p class="release-date">Released 2023-10-12</p>
+      <div class="rate">
+        <div class="stars">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+        <i class="fa fa-heart heart"></i>
+      </div>
+      <p class="overview">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+        quidem ullam accusantium nisi quasi dolore similique voluptate earum
+        commodi nobis! Accusantium itaque corporis quae non amet impedit,
+        accusamus aliquid ex, recusandae maxime error voluptas earum ab eligendi
+        magni suscipit id eaque sit nobis quos libero minima velit rerum
+        voluptatibus! Iusto aperiam neque id fugiat ipsum! Cum delectus
+        assumenda quia id nulla. Neque fuga similique culpa amet magnam.
+        Impedit, blanditiis aspernatur facere nesciunt molestias incidunt,
+        ducimus, modi omnis libero neque quis quas iusto ullam culpa velit
+        asperiores facilis beatae consequatur? Ullam quae corrupti et vitae
+        dignissimos, ipsa sit asperiores laborum illum.
+      </p>
+      <div class="movies-list">
+        <movie-card class="selected-card" title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+        <movie-card title="The witcher" img="https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg"></movie-card>
+      </div>
     </main>
-    
-</body>
+
+    <footer></footer>
+  </body>
 </html>

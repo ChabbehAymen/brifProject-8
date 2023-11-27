@@ -1,34 +1,114 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    height: 100vh;
-    margin: 0;
-    background-color: #0f1219;
-    color: white;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2%;
-    border-bottom: 1px solid;
-}
-header .tabs{
-    width: 35%;
-    display: flex;
-    gap: 15%;
+body {
+  height: 100vh;
+  margin: 0;
+  color: white;
+  background-image: url(https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg);
+  background-size: cover;
+  background-position: right;
+  box-shadow: 50vw 30vh 30rem #0f1219 inset;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-header .tabs p{
-    font-weight: bold;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2%;
+  border-bottom: 1px solid;
 }
-.movie-item > div[name='img']{
+header .tabs {
+  width: 35%;
+  display: flex;
+  gap: 15%;
+}
+
+header .tabs p {
+  font-weight: bold;
+}
+
+header .tabs .selected {
+  color: #10d9bf;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid #10d9bf;
+  border-radius: 20%;
+}
+
+main {
+  padding: 5% 10%;
+}
+
+main .release-date {
+  font-weight: bold;
+}
+
+main .rate {
+  width: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+main .rate .heart {
+  size: 4rem;
+}
+
+main .rate .stars {
+  display: flex;
+  gap: 5%;
+}
+
+main .overview {
+  position: relative;
+  width: 25%;
+  height: 30vh;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+main .overview::after {
+  /* display: inline; */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* background-color: #0f1219; */
+  background: linear-gradient(0deg, #0f1219 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+main .movies-list {
+  position: absolute;
+  display: flex;
+  height: 40vh;
+  width: 100vw;
+  bottom:0;
+  left: 0;
+  gap: 5%;
+  padding:0 2%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+main .movies-list movie-card .img {
     height: 30vh;
-    width: 15%;
+    width: 12vw;
     background-image: url(https://image.tmdb.org/t/p/w500/bkpPTZUdq31UGDovmszsg2CchiI.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+main .movies-list movie-card p{
+    color: gray;
+}
+
+main .movies-list .selected-card p{
+    color: white;
+}
+
