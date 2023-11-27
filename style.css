@@ -28,6 +28,7 @@ header .tabs {
 
 header .tabs p {
   font-weight: bold;
+  cursor: pointer;
 }
 
 header .tabs .selected {
