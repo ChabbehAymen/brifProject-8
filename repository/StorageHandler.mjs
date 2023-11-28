@@ -1,45 +1,53 @@
 let instance;
-class StorageHandler{
-    #moviesStorageKey = 'movies';
-    #tvShowStorageKey = 'tv-shows'
-    #movies = [];
-    #tvShows = [];
-    
-    constructor(){
-        if(instance) return instance
-        else instance = this;
-    }
+class StorageHandler {
+  #moviesStorageKey = "movies";
+  #tvShowStorageKey = "tv-shows";
+  #movies = [];
+  #tvShows = [];
+  #favorites = [];
 
-    cacheMovies(data){
-        localStorage.setItem(this.#moviesStorageKey, JSON.stringify(data));
-    }
+  constructor() {
+    if (instance) return instance;
+    else instance = this;
+  }
 
-    cacheTvShows(data){
-        localStorage.setItem(this.#tvShowStorageKey, JSON.stringify(data));
-    }
+  cacheMovies(data) {
+    localStorage.setItem(this.#moviesStorageKey, JSON.stringify(data));
+    this.#movies = data
+  }
 
-    getMovies(){
-        this.#movies = JSON.parse(localStorage.getItem(this.#moviesStorageKey)).results;
-        return this.#movies
-    }
+  cacheTvShows(data) {
+    localStorage.setItem(this.#tvShowStorageKey, JSON.stringify(data));
+  }
 
-    getTvShows(){
-        this.#tvShows = JSON.parse(localStorage.getItem(this.#tvShowStorageKey)).results;
-        console.log(this.#tvShows);
-        return this.#tvShows;
-    }
+  getMovies() {
+      this.#movies = JSON.parse(localStorage.getItem(this.#moviesStorageKey)).results;
+      return this.#movies;
+  }
 
-    getMovieById(id){
-        return this.#searchInList(this.#movies, id)? this.#searchInList(this.#movies, id) : this.#searchInList(this.#tvShows, id);
-    }
+  getTvShows() {
+    this.#tvShows = JSON.parse(
+      localStorage.getItem(this.#tvShowStorageKey)
+    ).results;
+    return this.#tvShows;
+  }
 
-    #searchInList(list, id){
-        for (const movie of list) {
-            if (movie.id == id) {
-                return movie;
-            }
-        }
+  getFavorites(){}
+
+
+  getMovieById(id) {
+    return this.#searchInList(this.#movies, id)
+      ? this.#searchInList(this.#movies, id)
+      : this.#searchInList(this.#tvShows, id);
+  }
+
+  #searchInList(list, id) {
+    for (const movie of list) {
+      if (movie.id == id) {
+        return movie;
+      }
     }
+  }
 }
 
 const storageHandler = new StorageHandler();
