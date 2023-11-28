@@ -1,6 +1,7 @@
 let instance;
 class StorageHandler{
     #moviesStorageKey = 'movies';
+    
     constructor(){
         if(instance) return instance
         else instance = this;

@@ -1,10 +1,8 @@
 export class ApiHandler {
   #moviesApiPage = 1;
   #tvApiPage = 1;
-  #moviesApi = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&api_key=bb8ac0f28b29e5bc50ad9e8ef9134ec8`;
-  #tvApi = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${
-    this.#tvApiPage
-  }`;
+  #moviesApi = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${this.#moviesApiPage}&api_key=bb8ac0f28b29e5bc50ad9e8ef9134ec8`;
+  #tvApi = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${this.#tvApiPage}&api_key=bb8ac0f28b29e5bc50ad9e8ef9134ec8`;
 
   fetchMovies(cacheData) {
     fetch(this.#moviesApi)
@@ -24,12 +22,20 @@ export class ApiHandler {
   fetchTvShows(cacheData) {
     fetch(this.#tvApi)
       .then((response) => {
-        response.json();
+        return response.json();
       })
       .then((data) => {
         cacheData(data);
       });
   }
 
-  // #fetchApi(api){}
+  // #fetchApi(api){
+  //   fetch(this.#tvApi)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       return cacheData(data);
+  //     });
+  // }
 }
