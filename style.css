@@ -96,6 +96,10 @@ main .movies-list {
   overflow-y: hidden;
 }
 
+main .movies-list::-webkit-scrollbar{
+    width: 0;
+}
+
 main .movies-list movie-card .img {
     height: 30vh;
     width: 12vw;

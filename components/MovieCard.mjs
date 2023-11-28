@@ -4,6 +4,7 @@ export class MovieCard extends HTMLElement {
   overview;
   rate;
   isFavorite = false;
+  
   constructor() {
     super();
   }
