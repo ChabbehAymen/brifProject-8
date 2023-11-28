@@ -1,10 +1,11 @@
+
 export class MovieCard extends HTMLElement {
   eid;
   releaseDate;
   overview;
   rate;
   isFavorite = false;
-  
+
   constructor() {
     super();
   }
@@ -16,6 +17,12 @@ export class MovieCard extends HTMLElement {
         )});"></div>
         <h4>${this.getAttribute("title")}</h4>
         `;
+  }
+
+  onClickLinstener(action){
+    this.addEventListener('click', ()=>{
+      action();
+    });
   }
 
   setAttributes(attributes, values) {

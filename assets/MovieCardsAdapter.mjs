@@ -16,7 +16,6 @@ export class MovieCardsAdapter {
   fillElement() {
     console.log(this.#selectedItem);
     document.querySelector('main h1').innerText = this.#selectedItem.title;
-    console.log(document.querySelector('main p'));
     document.querySelector('main p').innerText = `Released ${this.#selectedItem.release_date}`;
     document.querySelector('main .overview').innerText = this.#selectedItem.overview;
     document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${this.#selectedItem.poster_path})`

@@ -5,7 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   color: white;
-  background-image: url(https://image.tmdb.org/t/p/w500/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
   box-shadow: 50vw 30vh 30rem #0f1219 inset;
