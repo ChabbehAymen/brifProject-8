@@ -16,8 +16,12 @@ document.querySelector('.home-tab').addEventListener('click', ()=>{
     createCards(storageHandler.getMovies());
 })
 
-document.querySelector('.tv-shows-tab').addEventListener('click', ()=>{
+document.querySelector('.tv-shows-tab').addEventListener('click', (e)=>{
     createCards(storageHandler.getTvShows());
+    for (const tab of document.querySelectorAll('header p')) {
+        tab.classList.toggle('selected');
+    }
+    e.target.classList.toggle('selected');
 })
 
 function createCards(movies){
