@@ -15,10 +15,10 @@ apiHandler.fetchTvShows((data) => {
 movieCardsAdapter.previewSelectedItem(storageHandler.getMovies()[0]);
 createCards(storageHandler.getMovies());
 
-document.querySelector(".home-tab").addEventListener("click", () => {
+document.querySelector(".home-tab").addEventListener("click", (e) => {
   createCards(storageHandler.getMovies());
   movieCardsAdapter.previewSelectedItem(storageHandler.getMovies()[0]);
-  //   hilightSelectedTab()
+    hilightSelectedTab(e.target);
 });
 
 document.querySelector(".tv-shows-tab").addEventListener("click", (e) => {
