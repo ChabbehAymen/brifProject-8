@@ -13,8 +13,7 @@ export class MovieCardsAdapter {
     return movieCard;
   }
 
-  fillElement() {
-    console.log(this.#selectedItem);
+  #fillElement() {
     document.querySelector('main h1').innerText = this.#selectedItem.title;
     document.querySelector('main p').innerText = `Released ${this.#selectedItem.release_date}`;
     document.querySelector('main .overview').innerText = this.#selectedItem.overview;
@@ -23,6 +22,6 @@ export class MovieCardsAdapter {
 
   previewSelectedItem(obj) {
     this.#selectedItem = obj;
-    this.fillElement();
+    this.#fillElement();
   }
 }

@@ -25,6 +25,7 @@ class StorageHandler{
 
     getTvShows(){
         this.#tvShows = JSON.parse(localStorage.getItem(this.#tvShowStorageKey)).results;
+        console.log(this.#tvShows);
         return this.#tvShows;
     }
 

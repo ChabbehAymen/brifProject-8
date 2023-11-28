@@ -28,14 +28,4 @@ export class ApiHandler {
         cacheData(data);
       });
   }
-
-  // #fetchApi(api){
-  //   fetch(this.#tvApi)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       return cacheData(data);
-  //     });
-  // }
 }
