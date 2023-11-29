@@ -12,8 +12,10 @@ apiHandler.fetchTvShows((data) => {
   storageHandler.cacheTvShows(data);
 });
 
-movieCardsAdapter.previewSelectedItem(storageHandler.getMovies()[0]);
-createCards(storageHandler.getMovies());
+if (storageHandler.getMovies()) {
+    createCards(storageHandler.getMovies());
+    movieCardsAdapter.previewSelectedItem(storageHandler.getMovies()[0]);
+}else movieCardsAdapter.showError();
 
 document.querySelector(".home-tab").addEventListener("click", (e) => {
   createCards(storageHandler.getMovies());
@@ -22,14 +24,26 @@ document.querySelector(".home-tab").addEventListener("click", (e) => {
 });
 
 document.querySelector(".tv-shows-tab").addEventListener("click", (e) => {
-  createCards(storageHandler.getTvShows());
-  movieCardsAdapter.previewSelectedItem(storageHandler.getTvShows()[0]);
+    let shows = storageHandler.getTvShows();
+  createCards(shows);
+  movieCardsAdapter.previewSelectedItem(shows[0]);
   hilightSelectedTab(e.target);
 });
 
 document.querySelector(".favorite-tab").addEventListener("click", (e) => {
   hilightSelectedTab(e.target);
+  let favorites = storageHandler.getFavorites();
+  createCards(favorites);
+  movieCardsAdapter.previewSelectedItem(favorites[0]);
 });
+
+document.querySelector('main .favorite-btn').addEventListener('click', e =>{
+    movieCardsAdapter.setFavorites(id => storageHandler.saveFavorites(id));
+});
+
+document.querySelector('header label input').addEventListener('input', e =>{
+    movieCardsAdapter.searchInMoviesCards(e.target.value);
+})
 
 function createCards(movies) {
   let list = document.querySelector(".movies-list");

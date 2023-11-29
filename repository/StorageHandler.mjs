@@ -2,9 +2,9 @@ let instance;
 class StorageHandler {
   #moviesStorageKey = "movies";
   #tvShowStorageKey = "tv-shows";
+  #favoritesStorageKey = "favorites";
   #movies = [];
   #tvShows = [];
-  #favorites = [];
 
   constructor() {
     if (instance) return instance;
@@ -13,7 +13,6 @@ class StorageHandler {
 
   cacheMovies(data) {
     localStorage.setItem(this.#moviesStorageKey, JSON.stringify(data));
-    this.#movies = data
   }
 
   cacheTvShows(data) {
@@ -21,8 +20,13 @@ class StorageHandler {
   }
 
   getMovies() {
-      this.#movies = JSON.parse(localStorage.getItem(this.#moviesStorageKey)).results;
+    if (localStorage.getItem(this.#moviesStorageKey)) {
+      this.#movies = JSON.parse(
+        localStorage.getItem(this.#moviesStorageKey)
+      ).results;
       return this.#movies;
+    }
+    return 0;
   }
 
   getTvShows() {
@@ -32,21 +36,61 @@ class StorageHandler {
     return this.#tvShows;
   }
 
-  getFavorites(){}
+  saveFavorites(id) {
+    if (localStorage.getItem(this.#favoritesStorageKey)) {
+      let favoritesIds = JSON.parse(
+        localStorage.getItem(this.#favoritesStorageKey)
+        );
 
+      if(!this.#isIdInList(id, favoritesIds)) favoritesIds.push(id);
 
-  getMovieById(id) {
-    return this.#searchInList(this.#movies, id)
-      ? this.#searchInList(this.#movies, id)
-      : this.#searchInList(this.#tvShows, id);
+      localStorage.setItem(
+        this.#favoritesStorageKey,
+        JSON.stringify(favoritesIds)
+      );
+    } else
+      localStorage.setItem(this.#favoritesStorageKey, JSON.stringify([id]));
   }
 
-  #searchInList(list, id) {
-    for (const movie of list) {
-      if (movie.id == id) {
-        return movie;
+  #isIdInList(id, list){
+    let isId = false
+    for (const ID of list)
+        if (ID == id) isId = true;
+    return isId   
+  }
+
+  getFavorites() {
+    let favorites = [];
+    if (JSON.parse(localStorage.getItem(this.#favoritesStorageKey))) {
+      for (const id of JSON.parse(localStorage.getItem(this.#favoritesStorageKey))) {
+        favorites.push(this.getMovieById(id));
       }
+      return favorites;
+    }else return favorites
+  }
+
+  getMovieById(id) {
+    let movies = this.#searchInMovies(id);
+    if (movies == null) {
+      return this.#searchInShows(id);
     }
+    return movies;
+  }
+
+  #searchInMovies(id) {
+    let movie = null;
+    for (let i = 0; i < this.#movies.length; i++) {
+      if (this.#movies[i].id == id) movie = this.#movies[i];
+    }
+    return movie;
+  }
+
+  #searchInShows(id) {
+    let shows = null;
+    for (let i = 0; i < this.#movies.length; i++) {
+      if (this.#movies[i].id == id) shows = this.#tvShows[i];
+    }
+    return shows;
   }
 }
 
