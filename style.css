@@ -71,9 +71,6 @@ main .rate {
   gap: 1rem;
 }
 
-main .rate .heart {
-  size: 4rem;
-}
 
 main .rate .stars {
   display: flex;
