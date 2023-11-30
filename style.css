@@ -59,6 +59,48 @@ main .error-msg iframe{
   width: 100%;
 }
 
+main .pagination{
+  position: absolute;
+  left: 3%;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+main .pagination .pages{
+  position: relative;
+}
+
+main .pagination .pages::before{
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 28%;
+  top: 0;
+  background: linear-gradient(0deg, #0f1219 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+main .pagination .pages::after{
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 28%;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #0f1219 100%);
+}
+
+main .pagination :where(.fa-chevron-up, .fa-chevron-down){
+  cursor: pointer;
+}
+
+main .pagination .pages .current-page{
+  transform: scale(2);
+}
+
 main .release-date {
   font-weight: bold;
 }
@@ -93,7 +135,6 @@ main .overview::after {
   left: 0;
   height: 100%;
   width: 100%;
-  /* background-color: #0f1219; */
   background: linear-gradient(0deg, #0f1219 0%, rgba(255, 255, 255, 0) 100%);
 }
 
@@ -110,9 +151,9 @@ main .movies-list {
   overflow-y: hidden;
 }
 
-main .movies-list::-webkit-scrollbar{
-    width: 0;
-}
+/* main .movies-list::-webkit-scrollbar{
+    width: 100%;
+} */
 
 main .movies-list movie-card .img {
     height: 30vh;

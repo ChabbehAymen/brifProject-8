@@ -21,8 +21,8 @@ export class MovieCardsAdapter {
     document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${this.#selectedItem.poster_path})`
   }
 
-  previewSelectedItem(obj) {
-    this.#selectedItem = obj;
+  previewSelectedItem(card) {
+    this.#selectedItem = card;
     this.#fillElement();
   }
 

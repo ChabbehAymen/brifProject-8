@@ -12,10 +12,8 @@ export class ApiHandler {
         }
       })
       .then((data) => {
+        console.log(data);
         cacheData(data)
-      })
-      .catch((error) => {
-        console.log("fetch Error", error);
       });
   }
 
@@ -28,4 +26,27 @@ export class ApiHandler {
         cacheData(data);
       });
   }
+
+  fetchMoviesNextPage(cacheData){
+    this.#moviesApiPage++;
+    console.log(this.#moviesApiPage);
+    console.log(this.#moviesApi);
+    this.fetchMovies(cacheData);
+  }
+
+  fetchMoviesPrevPage(cacheData){
+    this.#moviesApiPage--;
+    this.fetchMovies(cacheData);
+  }
+
+  fetchTvShowsNextPage(cacheData){
+    this.#tvApiPage++;
+    this.fetchTvShows(cacheData);
+  }
+
+  fetchTvShowsPage(cacheData){
+    this.#tvApiPage--;
+    this.fetchMovies(cacheData);
+  }
+
 }
