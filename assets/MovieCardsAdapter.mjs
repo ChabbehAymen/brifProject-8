@@ -37,6 +37,10 @@ export class MovieCardsAdapter {
     }
   }
 
+  getSelectedItemId(){
+    return this.#selectedItem.id;
+  }
+
   showError(){
     document.querySelector('.error-msg').style.display = 'block';
   }

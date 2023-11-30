@@ -1,5 +1,7 @@
 // TODO hide pager when the favorite tab is selected
-//  
+// TODO MediaQuery
+// TODO Info Page
+// TODO css for search input
 import { MovieCard } from "./components/MovieCard.mjs";
 import { ApiHandler } from "./repository/ApiHandler.mjs";
 import { MovieCardsAdapter } from "./assets/MovieCardsAdapter.mjs";
@@ -43,36 +45,51 @@ document.querySelector("main .favorite-btn").addEventListener("click", (e) => {
   movieCardsAdapter.setFavorites((id) => storageHandler.saveFavorites(id));
 });
 
+document.querySelector('.show-info-btn').addEventListener('click', e =>{
+  window.location.href = `detailPage/detailPage.html?id=${movieCardsAdapter.getSelectedItemId()}`
+})
+
 document.querySelector("header label input").addEventListener("input", (e) => {
   movieCardsAdapter.searchInMoviesCards(e.target.value);
 });
 
 document
-  .querySelector("main .pagination .fa-chevron-down")
+  .querySelector("main .pagination .fa-chevron-up")
   .addEventListener("click", () => {
-    console.log();
-    console.log();
+
+    if (document.querySelector('.current-page').innerHTML != 1){
     switch (true) {
-      case isTabSelected(document.querySelector(".home-tab")):
-        apiHandler.fetchMoviesNextPage(storageHandler.cacheMovies());
-        createCards(storageHandler.getMovies());
+      case document.querySelector(".home-tab").classList.contains('selected'):
+        apiHandler.fetchMoviesPrevPage(data => {
+          createCards(data.results);
+          storageHandler.cacheMovies(data)
+        });
         break;
-      case isTabSelected(document.querySelector(".tv-shows-tab")):
-        apiHandler.fetchTvShowsNextPage(storageHandler.cacheTvShows());
+      case document.querySelector(".tv-shows-tab").classList.contains('selected'):
+        apiHandler.fetchTvShowsPrevPage(data => storageHandler.cacheTvShows(data));
         createCards(storageHandler.getTvShows());
         break;
+      }
     }
   });
 
-  function isTabSelected(tab) {
-    let isSelected = false;
-    tab.classList.forEach( c => {
-      if (c == 'selected') isSelected = true;
-    });
-    return isSelected;
-  }
+document
+  .querySelector("main .pagination .fa-chevron-down")
+  .addEventListener("click", e => {
+      switch (true) {
+        case document.querySelector(".home-tab").classList.contains('selected'):
+          apiHandler.fetchMoviesNextPage(data => storageHandler.cacheMovies(data));
+          createCards(storageHandler.getMovies());
+          break;
+        case document.querySelector(".tv-shows-tab").classList.contains('selected'):
+          apiHandler.fetchTvShowsNextPage(data => storageHandler.cacheTvShows(data));
+          createCards(storageHandler.getTvShows());
+          break;
+      }
+  });
 
-function createCards(movies) {
+
+function createCards(movies, msg) {
   let list = document.querySelector(".movies-list");
   list.innerHTML = "";
   for (let movie of movies) {
