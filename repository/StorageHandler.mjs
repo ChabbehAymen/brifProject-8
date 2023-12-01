@@ -12,10 +12,12 @@ class StorageHandler {
   }
 
   cacheMovies(data) {
+    this.#movies = data.results;
     localStorage.setItem(this.#moviesStorageKey, JSON.stringify(data));
   }
 
   cacheTvShows(data) {
+    this.#tvShows = data.results;
     localStorage.setItem(this.#tvShowStorageKey, JSON.stringify(data));
   }
 
@@ -74,6 +76,7 @@ class StorageHandler {
     if (movies == null) {
       return this.#searchInShows(id);
     }
+    console.log();
     return movies;
   }
 

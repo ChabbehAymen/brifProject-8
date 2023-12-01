@@ -21,9 +21,10 @@ export class MovieCardsAdapter {
     document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${this.#selectedItem.poster_path})`
   }
 
-  previewSelectedItem(card) {
-    this.#selectedItem = card;
+  previewSelectedItem(item) {
+    this.#selectedItem = item;
     this.#fillElement();
+    this.displayRateWithStarts(item.vote_average);
   }
 
   setFavorites(saveSaveToStorage){
@@ -46,5 +47,16 @@ export class MovieCardsAdapter {
   getSelectedItemTitle(){
     console.log(this.#selectedItem.name);
     return this.#selectedItem.name;
+  }
+
+  displayRateWithStarts(rate) {
+    let NumberOfStars = 1;
+    if (rate > 2 && rate <= 4) NumberOfStars = 2;
+    if (rate > 4 && rate <= 6) NumberOfStars = 3;
+    if (rate > 6 && rate <= 8) NumberOfStars = 4;
+    if (rate > 8 && rate <= 10) NumberOfStars = 5;
+    for (let i = 0; i < NumberOfStars; i++) {
+      document.querySelectorAll(".fa-star")[i].style.color = "yellow";
+    }
   }
 }
