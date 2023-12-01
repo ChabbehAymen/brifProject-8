@@ -4,7 +4,7 @@ export class MovieCardsAdapter {
     let movieCard = document.createElement("movie-card");
     movieCard.setAttributes(
       ["title", "img"],
-      [obj.title ? obj.title : obj.name, `https://image.tmdb.org/t/p/w500${obj.poster_path}`]
+      [obj.title ? obj.title: obj.name, `https://image.tmdb.org/t/p/w500${obj.poster_path}`]
     );
 
     movieCard.eid = obj.id;
@@ -37,11 +37,14 @@ export class MovieCardsAdapter {
     }
   }
 
+  // used to send movie id to the details page
   getSelectedItemId(){
     return this.#selectedItem.id;
   }
 
-  showError(){
-    document.querySelector('.error-msg').style.display = 'block';
+  // used to send tv show name to the details page
+  getSelectedItemTitle(){
+    console.log(this.#selectedItem.name);
+    return this.#selectedItem.name;
   }
 }

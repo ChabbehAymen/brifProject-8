@@ -37,6 +37,17 @@ header .tabs .selected {
   border-radius: 20%;
 }
 
+header label input{
+  outline: none;
+  border-radius: 1rem;
+  height: 3.5vh;
+  width: 17vw;
+  border: 1px solid;
+  padding: 1rem;
+  background-color: transparent;
+  color: white;
+}
+
 main {
   padding: 5% 10%;
 }
@@ -52,11 +63,6 @@ main .error-msg{
   top: 0;
   left: 0;
   border-radius: 1rem;
-}
-
-main .error-msg iframe{
-  height: 100%;
-  width: 100%;
 }
 
 main .pagination{

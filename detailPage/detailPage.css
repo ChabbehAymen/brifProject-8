@@ -1,0 +1,85 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body{
+    height: 100vh;
+    background-image: url(https://image.tmdb.org/t/p/w500/9PqD3wSIjntyJDBzMNuxuKHwpUD.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0vw -65vh 20rem  #0f1219 inset;
+    color: white;
+}
+
+main{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5%;
+    padding: 2%;
+}
+
+main .tag{
+    padding: .2rem 1rem;
+    border: 1px solid;
+    border-radius: 1rem;
+    background-color: rgba(225, 225, 225, .3);
+}
+
+main img {
+    height: 90vh;
+    border-radius: 1rem;
+}
+
+main .content .title{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+main .content .title h1{
+    font-size: 5em;
+}
+
+main .content .title p{
+    font-size: .8rem;
+    margin-top: .8rem;
+}
+
+main .content .overview{
+    margin: 2rem 0 ;
+    font-size: 1.3rem;
+}
+
+main .content .stars{
+    margin-bottom: 1rem;
+}
+
+main .content .tags {
+    display: flex;
+    gap: 3%;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 800px) {
+    body{
+        height: auto;
+    }
+    
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    main img{
+        width: 40%;
+        height: 60%;
+    }
+
+    main .title h1{
+        font-size: 1em;
+    }
+}

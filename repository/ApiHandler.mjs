@@ -44,16 +44,42 @@ export class ApiHandler {
     this.fetchMovies(data => cacheData(data));
   }
 
-  fetchMovieById(title){
-    fetch(`https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=${this.#moviesApiPage}`)
+  fetchMovieById(id, callback){
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=bb8ac0f28b29e5bc50ad9e8ef9134ec8`)
       .then((response) => {
         if (response.ok) {
             return response.json();
         }
       })
       .then((data) => {
-        cacheData(data)
+        callback(data);
       });
+  }
+
+  fetchTvShowByTitle(title, callback){
+    fetch(`https://api.themoviedb.org/3/search/tv?query=${title}&api_key=bb8ac0f28b29e5bc50ad9e8ef9134ec8`)
+      .then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+      })
+      .then((data) => {
+        callback(data);
+      });
+  }
+
+  fetchGenresForTvShows(callBack){
+    fetch("https://api.themoviedb.org/3/genre/tv/list?api_key=bb8ac0f28b29e5bc50ad9e8ef9134ec8")
+  .then(response =>  {if(response.ok) return response.json()})
+  .then(data => callBack(data));
+  }
+
+  getMoviesPage(){
+    return this.#moviesApiPage;
+  }
+
+  getTvShowsPage(){
+    return this.#tvApiPage;
   }
 
 }
