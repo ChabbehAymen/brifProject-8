@@ -1,6 +1,4 @@
 // TODO MediaQuery
-// TODO Info Page
-// TODO css for search input
 import { MovieCard } from "./components/MovieCard.mjs";
 import { ApiHandler } from "./repository/ApiHandler.mjs";
 import { MovieCardsAdapter } from "./assets/MovieCardsAdapter.mjs";
